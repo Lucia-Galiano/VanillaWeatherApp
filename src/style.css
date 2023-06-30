@@ -1,8 +1,56 @@
-h1 {
-  color: blue;
+.container {
+  margin-top: 20px;
+  margin-left: 20px;
+  text-align: center;
+  position: fixed;
+  display: block;
+  border: transparent;
+  border-radius: 30px;
+  background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
+  color: black;
+}
+form {
+  text-align: center;
+  margin-top: 20px;
 }
 
-.btn {
-  color: white;
-  background-color: blue;
+button {
+  text-align: center;
+  border-radius: 4px;
+  border: transparent;
+  background-color: lavenderblush;
+  box-shadow: 5%;
+  font-size: 20px;
+}
+
+#searchButton:hover {
+  cursor: pointer;
+  border: solid;
+  border-width: 0.5px;
+  color: grey;
+}
+
+h1 {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 0%;
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+li {
+  list-style: none;
+}
+
+h2 {
+  text-align: center;
+  font-size: 100px;
+  display: inline;
+  margin-bottom: 0%;
+}
+
+.row {
+  font-size: 30px;
+  padding-bottom: 10px;
 }
