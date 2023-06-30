@@ -9,19 +9,24 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
+      <div class="card" style="background-image: url('farol.jpg')";>
+        <div class="card-header">
       <form class="search-form" id="search-form">
         <input
           type="search"
           autofocus="on"
           autocomplete="off"
           id="city-input"
-          placeholder="Insert location"
+          placeholder="Enter city please"
         />
         <input
           class="searchButton"
@@ -29,14 +34,15 @@
           type="submit"
           value="Search"
         ></input>
-    
-
+    </div>
+<div class="card-body">
       <h1 id="city">Florida, Uruguay</h1>
       <li id="date" class="date">Date</li>
-      <div class="emoji" id="emoji">🌫️</div>
+      <div class="emoji" id="emoji">☀️</div>
       <h2 id="temperature">6</h2>
       <span class="units">°C </span>
-
+</div>
+</div>
     <footer>
       This page was built by
       <a
