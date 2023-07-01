@@ -27,6 +27,7 @@ function search(event) {
 
   axios.get(`${apiUrl}`).then(showTemp);
 }
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
@@ -37,12 +38,17 @@ function showTemp(response) {
   let h1 = document.querySelector("#city");
   h1.innerHTML = response.data.name;
 }
-
-let emoji = document.querySelector("#emoji");
-function emojiWeather() {
-  if (temp <= 10) {
-    emoji.innerHTML = "☁️";
-  } else {
-    emoji.innerHTML = "☀️";
-  }
+function currentPlace(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "bd3bb6534458ba51b48c49f5155745b6";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(`${apiUrl}`).then(showTemp);
 }
+function currentPlaceButton(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(currentPlace);
+}
+
+let click = document.querySelector("#currentPlace");
+click.addEventListener("click", currentPlaceButton);

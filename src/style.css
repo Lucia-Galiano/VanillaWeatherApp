@@ -2,6 +2,7 @@ body {
   background-color: #cb8e728d;
   font-family: "Lora", serif;
 }
+
 .container {
   display: block;
 
@@ -22,6 +23,7 @@ body {
   border: transparent;
   border-radius: 10px;
   box-shadow: salmon;
+  background-size: 1600px;
 }
 input {
   font-family: "Lora", serif;
@@ -62,6 +64,7 @@ h1 {
   font-family: "Lora", serif;
 }
 li {
+  text-align: center;
   list-style: none;
   font-size: 30px;
 }
@@ -72,13 +75,26 @@ h2 {
   display: inline;
   margin-bottom: 0%;
 }
-.emoji {
-  display: inline;
-  font-size: 50px;
-}
 .row {
   font-size: 30px;
   padding-bottom: 10px;
+}
+
+button {
+  font-family: "Lora", serif;
+  text-align: center;
+  border-radius: 4px;
+  border: transparent;
+  background-color: lavenderblush;
+  box-shadow: 5%;
+  font-size: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+  border: solid;
+  border-width: 0.5px;
+  color: grey;
 }
 
 footer {

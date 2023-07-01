@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="card" style="background-image: url('farol.jpg')";>
+      <div class="card" id="background" style="background-image: url('farol.jpg')";>
         <div class="card-header">
       <form class="search-form" id="search-form">
         <input
@@ -36,13 +36,14 @@
         ></input>
     </div>
 <div class="card-body">
-      <h1 id="city">Florida, Uruguay</h1>
+      <h1 id="city">Uruguay</h1>
       <li id="date" class="date">Date</li>
-      <div class="emoji" id="emoji">☀️</div>
-      <h2 id="temperature">6</h2>
+      <h2 id="temperature">☁️6</h2>
       <span class="units">°C </span>
 </div>
+<button id="currentPlace" type="button">Current location</button>
 </div>
+
     <footer>
       This page was built by
       <a
@@ -51,7 +52,8 @@
         class="contact-page"
       >
         Lucia Galiano 🧉
-      </a>
+      </a>        
+
     </footer>
     </div>
     <script src="src/app.js"></script>
