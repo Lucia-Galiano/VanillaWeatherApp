@@ -1,3 +1,8 @@
+weather-app {
+  max-width: 600px;
+  text-align: center;
+}
+
 body {
   background-color: #cb8e728d;
   font-family: "Lora", serif;
