@@ -37,6 +37,10 @@ function showTemp(response) {
   tempElement.innerHTML = `${temp}`;
   let h1 = document.querySelector("#city");
   h1.innerHTML = response.data.name;
+  let windElement = document.querySelector("#windSpeed");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", ) = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}2x.png`;
 }
 function currentPlace(position) {
   let latitude = position.coords.latitude;
@@ -52,3 +56,19 @@ function currentPlaceButton(event) {
 
 let click = document.querySelector("#currentPlace");
 click.addEventListener("click", currentPlaceButton);
+
+let c = document.querySelector("#celsius");
+let f = document.querySelector("#fahrenheit");
+
+function replaceToC(event) {
+  event.preventDefault();
+  tempElement.innerHTML = `${temp}`;
+}
+
+function replaceToF(event) {
+  event.preventDefault();
+  tempElement.innerHTML = `${temp}/5)*9+32`;
+}
+
+c.addEventListener("click", replaceToC());
+f.addEventListener("click", replaceToF());
