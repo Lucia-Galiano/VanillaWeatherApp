@@ -79,6 +79,7 @@ h2 {
   font-size: 100px;
   display: inline;
   margin-bottom: 0%;
+  text-transform: capitalize;
 }
 .row {
   font-size: 30px;
