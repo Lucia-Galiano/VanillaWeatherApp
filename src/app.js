@@ -46,8 +46,6 @@ function showTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-
-  celsiusTemperature = response.data.main.temp;
 }
 function currentPlace(position) {
   let latitude = position.coords.latitude;
@@ -64,23 +62,23 @@ function currentPlaceButton(event) {
 let press = document.querySelector("#currentPlace");
 press.addEventListener("click", currentPlaceButton);
 
-function replaceToC(event) {
-  event.preventDefault();
-  let temp = Math.round(response.data.main.temp);
-  let tempElement = document.querySelector("#temperature");
-  tempElement.innerHTML = `${temp}`;
-}
-
-let c = document.querySelector(".celsius");
-
-c.addEventListener("click", replaceToC());
+celsiusTemperature = response.data.main.temp;
 
 function convertToF(event) {
   event.preventDefault();
   let temp = Math.round(response.data.main.temp);
   let tempElement = document.querySelector("#temperature");
-  tempElement.innerHTML = `((${temp}*9)/5+32)`;
+  tempElement.innerHTML = `${(celsiusTemperature * 9) / 5 + 32}`;
 }
 
+function replaceToC(event) {
+  event.preventDefault();
+  let temp = Math.round(response.data.main.temp);
+  let tempElement = document.querySelector("#temperature");
+  tempElement.innerHTML = `${celsiusTemperature}`;
+}
+
+let c = document.querySelector(".celsius");
 let f = document.querySelector(".fahrenheit");
+c.addEventListener("click", replaceToC());
 f.addEventListener("click", convertToF());
