@@ -1,22 +1,86 @@
-let date = document.querySelector("#date");
-let currentTime = new Date();
-let hours = currentTime.getHours();
-let minutes = currentTime.getMinutes();
-let dayIndex = currentTime.getDay();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
-let day = days[dayIndex];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
 
-date.innerHTML = `${day} ${hours}:${minutes}`;
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+      <div class="forecast-date">
+        ${day}
+      </div>
+      <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="" width="42"/>
+    <div class="forecast-temperatures">
+<span class="forecast-temp-max">
+  18°
+</span>
+<span class="forecast-temp-min">
+  12° 
+</span> 
+    </div>
+    </div>
+  </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "b400ae3b711a616262d18b0ca2cbe78f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
+function showTemp(response) {
+  let temp = Math.round(response.data.main.temp);
+  let tempElement = document.querySelector("#temperature");
+  tempElement.innerHTML = `${temp}`;
+  let h1 = document.querySelector("#city");
+  h1.innerHTML = response.data.name;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  let windElement = document.querySelector("#windSpeed");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
+  celsiusTemperature = Math.round(response.data.main.temp);
+
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
+}
 function search(event) {
   event.preventDefault();
   let city = document.querySelector("#city");
@@ -30,24 +94,6 @@ function search(event) {
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
-
-function showTemp(response) {
-  celsiusTemperature = Math.round(response.data.main.temp);
-  let temp = Math.round(response.data.main.temp);
-  let tempElement = document.querySelector("#temperature");
-  tempElement.innerHTML = `${temp}`;
-  let h1 = document.querySelector("#city");
-  h1.innerHTML = response.data.name;
-  let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  let windElement = document.querySelector("#windSpeed");
-  windElement.innerHTML = Math.round(response.data.wind.speed);
-  let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-}
 function currentPlace(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;

@@ -28,7 +28,7 @@ body {
   border: transparent;
   border-radius: 10px;
   box-shadow: salmon;
-  background-size: 1600px;
+  background-size: 1500px;
 }
 input {
   font-family: "Lora", serif;
@@ -106,4 +106,26 @@ button:hover {
 
 footer {
   text-align: center;
+}
+
+.forecast {
+  background-color: black;
+  opacity: 50%;
+}
+.col-2 {
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.forecast-date {
+  font-size: 16px;
+}
+.forecast-temp-min {
+  opacity: 0.5;
+}
+.forecast-temperatures {
+  font-size: 13px;
 }
